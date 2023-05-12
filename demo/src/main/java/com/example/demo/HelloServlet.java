@@ -1,7 +1,6 @@
-package com.example.demo1;
+package com.example.demo;
 
 import java.io.*;
-
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
