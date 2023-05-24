@@ -22,11 +22,28 @@
   String username = request.getParameter("username");
   String password =request.getParameter("password");
   Cookie theCookie = new Cookie("myapp.username",username);
-
+  Cookie theCookiepass = new Cookie("myapp.password",password);
   theCookie.setMaxAge(60*60*24*365); // <---For one year
-
+  theCookiepass.setMaxAge(60*60*24*365);
   //send cookie to browser
   response.addCookie(theCookie);
+  response.addCookie(theCookiepass);
 %>
+<%
+  String name = request.getParameter("username");
+  out.print("Welcome " + name);
+
+  session.setAttribute("user", name);
+%>
+<br/>
+<%
+  String name1 = (String) session.getAttribute("user");
+  out.print("Hello " + name1);
+%>
+
+
+
+
+
 </body>
 </html>
