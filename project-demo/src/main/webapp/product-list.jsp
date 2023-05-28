@@ -11,6 +11,10 @@
             width: 100%;
             border-collapse: collapse;
         }
+.add-button{
+    color: red;
+    font-size: 30px;
+}
 
     </style>
 
@@ -32,7 +36,7 @@
             <td>${product.price}</td>
             <td>
                 <a class="button" href="products?action=edit&id=${product.id}">Edit</a>
-                <a class="button" href="products?action=delete&id=${product.id}" onclick="return confirm('Are you sure you want to delete this product?')">Delete</a>
+                <a class="button 1" href="products?action=delete&id=${product.id}" onclick="return confirm('Are you sure you want to delete this product?')">Delete</a>
             </td>
         </tr>
     </c:forEach>
