@@ -10,8 +10,8 @@
 <head>
     <title>Show</title>
     <style>
-
-        h2{
+        a {
+            text-decoration: none;
             border: solid;
             background-color: green;
             font-style: initial;
@@ -19,9 +19,11 @@
             color: white;
             display: inline-block;
             border-radius: 10px;
-            text-decoration: none;
+
             padding: 10px;
+
         }
+
         tr{
             border-bottom: 1px solid grey;
         }
@@ -36,11 +38,24 @@
             width: 100%;
             border-collapse: collapse;
         }
+        .image-container{
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .image-container img {
+            width: 50%;
+            height: 50%;
+            object-fit: cover;
+        }
     </style>
 </head>
 <body>
+<a href="cars">Home</a>
+<h2 style="text-align: center">Details</h2>
 
-<h2>Details</h2>
 <table>
 <tr>
     <th>Id</th>
@@ -56,7 +71,7 @@
     <td>${car.carName}</td>
     <td>${car.price}</td>
     <td>${car.color}</td>
-    <td><img src="${car.imageUrl}" alt="Car Image"></td>
+    <td ><img src="${car.imageUrl}" alt="Car Image" class="image-container"></td>
     <td>${car.details}</td>
 </tr>
 

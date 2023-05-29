@@ -29,7 +29,9 @@
       <br><br>
      <label for="details" id ="details">Detail:</label>
       <input type="text" id ="details" name="details">
-      <br><br>
+
+
+
       <br><br>
       <input  type="submit" value="Create">
       <a class="button" href="cars">Cancels</a>
@@ -47,17 +49,20 @@
       <input type="text" id="price" name="price" value="${car.price}">
       <br><br>
       <label for="color">Color: </label>
-      <select name="color" id="color-select">
-        <option value="">--Hãy chọn một màu sắc--</option>
+
+      <select name="color" id="color-select" >
+        <option value="${car.color}">-- Chọn màu--</option>
         <option value="blue">blue</option>
         <option value="black">black</option>
         <option value="red">red</option>
       </select>
+      <br><br>
       <label for="image">Image:</label>
-      <input type="file" id="image " name="image">
+      <input type="file" id="image " name="image" >
       <br><br>
       <label for="details" id ="details">Detail:</label>
       <input type="text" id ="details" name="details" value="${car.details}">
+      <br><br>
       <input type="submit" value="Update">
       <a class="button" href="cars">Cancel</a>
     </form>
@@ -71,4 +76,5 @@
 </c:choose>
 
 </body>
+
 </html>

@@ -31,7 +31,7 @@
             padding: 10px;
         }
         show-button{
-            background-color: darkgreen;
+            background-color: aqua;
         }
         .delete-button {
             background-color: red;
@@ -54,22 +54,22 @@
             padding: 12px;
         }
         .image-container{
-            width: 200px;
-            height: 200px;
+            width: 100px;
+            height: 100px;
             border: 1px solid #ccc;
             border-radius: 5px;
             overflow: hidden;
         }
         .image-container img {
-            width: 100%;
-            height: 100%;
+            width: 50%;
+            height: 50%;
             object-fit: cover;
         }
   </style>
 
 </head>
 <body>
-<h1>Car List</h1>
+<h1 style="text-align: center">Car List</h1>
 <a class="button add-button" href="cars?action=new">Add new product</a>
 <table>
     <tr>
@@ -88,9 +88,9 @@
             <td>${car.color}</td>
             <td><img src="${car.imageUrl}" alt="Car Image" class="image-container"> </td>
             <td>
-                <a class="button show-button" href="cars?action=show&id=${car.id}">Show</a>
                 <a class="button edit-button" href="cars?action=edit&id=${car.id}">Edit</a>
                 <a class="button delete-button" href="cars?action=delete&id=${car.id}" onclick="return confirm('Are you sure you want to delete this CarList ?')">Delete</a>
+                <a class="button show-button" href="cars?action=show&id=${car.id}">Show</a>
             </td>
         </tr>
     </c:forEach>
