@@ -24,7 +24,7 @@ public class CarServlet extends HttpServlet {
     public void init() throws ServletException{
         super.init();
         carList = new ArrayList<>();
-        carList.add(new Car(1,"...",0.0,"red",""));
+        carList.add(new Car(1,"...",0.0,"red","image/service-3.jsp"));
         carList.add(new Car(2,"...",0.0, "blue",""));
 
     }
@@ -56,37 +56,37 @@ public class CarServlet extends HttpServlet {
                 listCars(request, response);
                 break;
         }
-        String imageName = request.getParameter("imageName");
-        String imagePath = getServletContext().getRealPath("/image/" + imageName);
-
-        Path imageFilePath = Paths.get(imagePath);
-
-
-        response.setContentType("image/jpeg");
-        response.setContentLength((int) Files.size(imageFilePath));
-
-        // Gửi dữ liệu ảnh về client
-        Files.copy(imageFilePath, response.getOutputStream());
+//        String imageName = request.getParameter("imageName");
+//        String imagePath = getServletContext().getRealPath("/image/" + imageName);
+//
+//        Path imageFilePath = Paths.get(imagePath);
+//
+//
+//        response.setContentType("image/jpeg");
+//        response.setContentLength((int) Files.size(imageFilePath));
+//
+//        // Gửi dữ liệu ảnh về client
+//        Files.copy(imageFilePath, response.getOutputStream());
 
 
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        String uploadPath = getServletContext().getRealPath("") + File.separator + "cars";
-        String imagePath = getServletContext().getRealPath("image");
-        File uploadDir = new File(uploadPath);
-        if (!uploadDir.exists()) {
-            uploadDir.mkdir();
-        }
-
-        Part filePart = request.getPart("file");
-        String fileName = filePart.getSubmittedFileName();
-        String filePath = uploadPath + File.separator + fileName;
-        filePart.write(filePath);
-
-        response.getWriter().println("Upload thành công: " + fileName);
         doGet(request, response);
+//        String uploadPath = getServletContext().getRealPath("") + File.separator + "cars";
+//        String imagePath = getServletContext().getRealPath("image");
+//        File uploadDir = new File(uploadPath);
+//        if (!uploadDir.exists()) {
+//            uploadDir.mkdir();
+//        }
+//
+//        Part filePart = request.getPart("file");
+//        String fileName = filePart.getSubmittedFileName();
+//        String filePath = uploadPath + File.separator + fileName;
+//        filePart.write(filePath);
+//
+//        response.getWriter().println("Upload thành công: " + fileName);
+//        doGet(request, response);
 
     }
 

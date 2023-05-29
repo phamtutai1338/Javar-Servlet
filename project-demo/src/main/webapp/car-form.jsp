@@ -2,11 +2,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-  <title>Car Form</title>
+  <title>Add New </title>
 
 </head>
 <body>
-<h1>Car Form</h1>
+<h1>Add New</h1>
 <c:choose>
   <c:when test="${empty car.id}">
     <form method="POST" action="cars?action=create">
@@ -23,10 +23,6 @@
         <option value="black">black</option>
         <option value="red">red</option>
       </select>
-      <form action="cars" method="POST" enctype="multipart/form-data">
-        <input type="file" name="file" />
-
-      </form>
 
       <br><br>
       <br><br>
@@ -36,7 +32,7 @@
 
   </c:when>
   <c:otherwise>
-    <form method="POST" action="cars?action=update">
+    <form method="POST" action="cars?action=update" enctype="multipart/form-data">
       <input type="hidden" name="id" value="${car.id}">
       <label for="carName">Car name: </label>
       <input type="text" id="productName" name="productName" value="${car.carName}">
@@ -52,10 +48,9 @@
         <option value="red">red</option>
 
       </select>
-      <form action="CarServlet" method="post" >
-        <input type="file" id="image" name="imageFilePath" value="${car.image}">
 
-      </form>
+
+
       <br><br>
       <input type="submit" value="Update">
       <a class="button" href="cars">Cancel</a>
