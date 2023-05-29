@@ -3,69 +3,7 @@
 <html>
 <head>
     <title>Car List</title>
-    <style>
-
-        .add-button {
-
-            border: solid;
-            background-color: green;
-            font-style: initial;
-            font-family: sans-serif;
-            color: white;
-            padding: 12px;
-            margin-bottom: 0;
-            display: inline-block;
-            border-radius: 10px;
-            text-decoration: none;
-
-        }
-        .button {
-            border: solid;
-            background-color: green;
-            font-style: initial;
-            font-family: sans-serif;
-            color: white;
-            display: inline-block;
-            border-radius: 10px;
-            text-decoration: none;
-            padding: 10px;
-        }
-        show-button{
-            background-color: aqua;
-        }
-        .delete-button {
-            background-color: red;
-        }
-        .edit-button {
-            background-color: darkorange;
-        }
-        table{
-            width: 100%;
-            border-collapse: collapse;
-        }
-        tr{
-            border-bottom: 1px solid grey;
-        }
-        th {
-            text-align: left;
-        }
-        th,td{
-            border-bottom: 1px solid grey;
-            padding: 12px;
-        }
-        .image-container{
-            width: 100px;
-            height: 100px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        .image-container img {
-            width: 50%;
-            height: 50%;
-            object-fit: cover;
-        }
-  </style>
+   <link rel="stylesheet" href="css/car.css">
 
 </head>
 <body>

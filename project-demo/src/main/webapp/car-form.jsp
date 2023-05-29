@@ -16,8 +16,7 @@
       <br><br>
       <label for="price">Price: </label>
       <input type="text" id="price" name="price">
-      <label for="color">Color: </label>
-
+      <label for="color">Color </label>
       <select name="color" id="color-select">
         <option value="">--Hãy chọn một màu sắc--</option>
         <option value="blue">blue</option>
@@ -27,10 +26,8 @@
       <label for ="image">Image</label>
       <input type="file" id="image" name="image">
       <br><br>
-     <label for="details" id ="details">Detail:</label>
+     <label for="details" >Detail:</label>
       <input type="text" id ="details" name="details">
-
-
 
       <br><br>
       <input  type="submit" value="Create">
@@ -58,7 +55,7 @@
       </select>
       <br><br>
       <label for="image">Image:</label>
-      <input type="file" id="image " name="image" >
+      <input type="file" id="image " name="image">
       <br><br>
       <label for="details" id ="details">Detail:</label>
       <input type="text" id ="details" name="details" value="${car.details}">
