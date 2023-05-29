@@ -40,7 +40,7 @@
     <form method="POST" action="cars?action=update" enctype="multipart/form-data">
       <input type="hidden" name="id" value="${car.id}">
       <label for="carName">Car name: </label>
-      <input type="text" id="productName" name="productName" value="${car.carName}">
+      <input type="text" id="carName" name="carName" value="${car.carName}">
       <br><br>
       <label for="price">Price: </label>
       <input type="text" id="price" name="price" value="${car.price}">

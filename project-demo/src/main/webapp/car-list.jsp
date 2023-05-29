@@ -9,6 +9,7 @@
 <body>
 <h1 style="text-align: center">Car List</h1>
 <a class="button add-button" href="cars?action=new">Add new product</a>
+
 <table>
     <tr>
         <th>Id</th>
@@ -24,7 +25,8 @@
             <td>${car.carName}</td>
             <td>${car.price}</td>
             <td>${car.color}</td>
-            <td><img src="${car.imageUrl}" alt="Car Image" class="image-container"> </td>
+            <td><img src="${car.imageUrl}" alt="Car Image" class="image-container"></td>
+
             <td>
                 <a class="button edit-button" href="cars?action=edit&id=${car.id}">Edit</a>
                 <a class="button delete-button" href="cars?action=delete&id=${car.id}" onclick="return confirm('Are you sure you want to delete this CarList ?')">Delete</a>

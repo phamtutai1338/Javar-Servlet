@@ -6,6 +6,7 @@ import java.util.List;
 import java.io.File;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,13 +15,14 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.Part;
 
 @WebServlet("/cars")
+@MultipartConfig
 public class CarServlet extends HttpServlet {
     private List<Car> carList;
 
     public void init() throws ServletException{
         super.init();
         carList = new ArrayList<>();
-        carList.add(new Car(1,"...",0.0,"red","images/service-3.jpg","sx 2010"));
+        carList.add(new Car(1,"Mazda3",594.0 ,"white","images/mazda3-1-1093.jpg","Bước sang thế hệ thứ 4, Mazda 3 đã có sự thay đổi về kích thước xe Mazda 3. Cụ thể, mẫu xe này tăng thêm về chiều dài tầm 80 mm, chiều cao lại hạ thấp 10mm với biến thể Sedan và 30mm với biến thể Mazda 3 hatchback 2023. Nhờ vào sự điều chỉnh này mà Mazda 3 đã sở hữu hình ảnh thể thao, cuốn hút hơn. Tuy nhiên, không gian nội thất của Mazda 3 cũng kích thước Mazda 3 mà bị hạn chế một chút."));
 
 
     }
@@ -57,9 +59,11 @@ public class CarServlet extends HttpServlet {
                 break;
         }
 
-
-
     }
+
+
+
+
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
@@ -89,7 +93,6 @@ public class CarServlet extends HttpServlet {
         String carName = request.getParameter("carName");
         double price = Double.parseDouble(request.getParameter("price"));
         String color = request.getParameter("color");
-
         String details= request.getParameter("details");
         int id = carList.size() + 1;
 
@@ -119,7 +122,6 @@ public class CarServlet extends HttpServlet {
         String carName = request.getParameter("carName");
         double price = Double.parseDouble(request.getParameter("price"));
         String color = request.getParameter("color");
-
         String details = request.getParameter("details");
         Car carToUpdate = getCarById(id);
 

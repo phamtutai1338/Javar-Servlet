@@ -71,7 +71,8 @@
     <td>${car.carName}</td>
     <td>${car.price}</td>
     <td>${car.color}</td>
-    <td ><img src="${car.imageUrl}" alt="Car Image" class="image-container"></td>
+    <td><img src="${car.imageUrl}" alt="Car Image" class="image-container"> </td>
+
     <td>${car.details}</td>
 </tr>
 
