@@ -30,6 +30,9 @@
             text-decoration: none;
             padding: 10px;
         }
+        show-button{
+            background-color: darkgreen;
+        }
         .delete-button {
             background-color: red;
         }
@@ -50,7 +53,18 @@
             border-bottom: 1px solid grey;
             padding: 12px;
         }
-
+        .image-container{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
   </style>
 
 </head>
@@ -71,12 +85,10 @@
             <td>${car.id}</td>
             <td>${car.carName}</td>
             <td>${car.price}</td>
-            <th>${car.color}</th>
-            <th>${car.image}</th>
-
-
-
+            <td>${car.color}</td>
+            <td><img src="${car.imageUrl}" alt="Car Image" class="image-container"> </td>
             <td>
+                <a class="button show-button" href="cars?action=show&id=${car.id}">Show</a>
                 <a class="button edit-button" href="cars?action=edit&id=${car.id}">Edit</a>
                 <a class="button delete-button" href="cars?action=delete&id=${car.id}" onclick="return confirm('Are you sure you want to delete this CarList ?')">Delete</a>
             </td>
@@ -84,7 +96,5 @@
     </c:forEach>
 
 </table>
-
-
 </body>
 </html>

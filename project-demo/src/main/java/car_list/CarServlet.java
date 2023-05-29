@@ -1,10 +1,10 @@
 package car_list;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.File;
-import car_list.Car;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,10 +13,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.*;
 import jakarta.servlet.http.Part;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.Files;
-import java.io.OutputStream;
 @WebServlet("/cars")
 public class CarServlet extends HttpServlet {
     private List<Car> carList;
@@ -24,8 +20,8 @@ public class CarServlet extends HttpServlet {
     public void init() throws ServletException{
         super.init();
         carList = new ArrayList<>();
-        carList.add(new Car(1,"...",0.0,"red","image/service-3.jsp"));
-        carList.add(new Car(2,"...",0.0, "blue",""));
+        carList.add(new Car(1,"...",0.0,"red","images/service-3.jpg","sx 2010"));
+
 
     }
 
@@ -37,6 +33,7 @@ public class CarServlet extends HttpServlet {
         }
 
         switch (action){
+
             case "new":
                 showNewForm(request, response);
                 break;
@@ -52,41 +49,21 @@ public class CarServlet extends HttpServlet {
             case "delete":
                 deleteCar(request, response);
                 break;
+            case"show":
+                showCar(request,response);
+                break;
             default:
                 listCars(request, response);
                 break;
         }
-//        String imageName = request.getParameter("imageName");
-//        String imagePath = getServletContext().getRealPath("/image/" + imageName);
-//
-//        Path imageFilePath = Paths.get(imagePath);
-//
-//
-//        response.setContentType("image/jpeg");
-//        response.setContentLength((int) Files.size(imageFilePath));
-//
-//        // Gửi dữ liệu ảnh về client
-//        Files.copy(imageFilePath, response.getOutputStream());
+
 
 
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
-//        String uploadPath = getServletContext().getRealPath("") + File.separator + "cars";
-//        String imagePath = getServletContext().getRealPath("image");
-//        File uploadDir = new File(uploadPath);
-//        if (!uploadDir.exists()) {
-//            uploadDir.mkdir();
-//        }
-//
-//        Part filePart = request.getPart("file");
-//        String fileName = filePart.getSubmittedFileName();
-//        String filePath = uploadPath + File.separator + fileName;
-//        filePart.write(filePath);
-//
-//        response.getWriter().println("Upload thành công: " + fileName);
-//        doGet(request, response);
+
 
     }
 
@@ -100,15 +77,29 @@ public class CarServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("car-form.jsp");
         dispatcher.forward(request, response);
     }
+    private void showCar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        int id = Integer.parseInt(request.getParameter("id"));
+        Car car = getCarById(id);
 
+        request.setAttribute("car", car);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("car-info.jsp");
+        dispatcher.forward(request, response);
+    }
     private void createCar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String carName = request.getParameter("carName");
         double price = Double.parseDouble(request.getParameter("price"));
         String color = request.getParameter("color");
-        String image = request.getParameter("image");
+
+        String details= request.getParameter("details");
         int id = carList.size() + 1;
 
-        Car newCar = new Car(id, carName, price, color,image);
+        Part filePart = request.getPart("image");
+        String fileName = getFileName(filePart);
+        String  uploadDirectory = getServletContext().getRealPath("/images");
+        String filePath = uploadFile( filePart, fileName,uploadDirectory);
+        String fileURL = "/images/"+fileName;
+
+        Car newCar = new Car(id, carName, price, color,details,fileURL);
         carList.add(newCar);
 
         response.sendRedirect("cars");
@@ -128,20 +119,42 @@ public class CarServlet extends HttpServlet {
         String carName = request.getParameter("carName");
         double price = Double.parseDouble(request.getParameter("price"));
         String color = request.getParameter("color");
-        String image = request.getParameter("image");
-        Car car = getCarById(id);
 
-        car.setCarName(carName);
-        car.setPrice(price);
-        car.setColor(color);
-        car.setImage(image);
+        String details = request.getParameter("details");
+        Car carToUpdate = getCarById(id);
+
+        carToUpdate.setCarName(carName);
+        carToUpdate.setPrice(price);
+        carToUpdate.setColor(color);
+        carToUpdate.setDetails(details);
+
+
+        Part filePart = request.getPart("image");
+        if(filePart != null && filePart.getSize() >0){
+            deleteImage(carToUpdate.getImageUrl(), request);
+
+            String fileName = getFileName(filePart);
+
+            String uploadDirectory = getServletContext().getRealPath("/images");
+
+
+            String filePath = uploadFile( filePart,fileName, uploadDirectory);
+
+            String fileURL = "images/" + fileName;
+
+            carToUpdate.setImageUrl(fileURL);
+        }
         response.sendRedirect("cars");
     }
 
     private void deleteCar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         int id = Integer.parseInt(request.getParameter("id"));
-        Car car = getCarById(id);
-        carList.remove(car);
+        Car carToDelete = getCarById(id);
+        if (carToDelete != null){
+
+            deleteImage(carToDelete.getImageUrl(), request);
+            carList.remove(carToDelete);
+        }
 
         response.sendRedirect("cars");
     }
@@ -155,5 +168,37 @@ public class CarServlet extends HttpServlet {
             }
         }
         return null;
+    }
+    private void deleteImage(String imageUrl,HttpServletRequest request){
+        String uploadDirectory = request.getServletContext().getRealPath("")+ File.separator+"image";
+        String imagePath = uploadDirectory +File.separator + imageUrl;
+        File imageFile = new File(imagePath);
+        if(imageFile.exists()){
+            imageFile.delete();
+        }
+    }
+    private String uploadFile(Part filePart,String fileName, String uploadDirectory)throws IOException{
+        String filePath = uploadDirectory + File.separator + fileName;
+        try (InputStream inputStream = filePart.getInputStream();
+             FileOutputStream outputStream = new FileOutputStream(filePath)){
+            byte[]buffer = new byte[8192];
+            int bytesRead;
+
+            while((bytesRead = inputStream.read(buffer)) != -1){
+                outputStream.write(buffer,0 ,bytesRead);
+            }
+        }
+        return filePath;
+    }
+    private String getFileName(Part part){
+        String contentDisposition = part.getHeader("content-disposition");
+        String[] elements = contentDisposition.split(";");
+
+        for (String element : elements){
+            if(element.trim().startsWith("filename")){
+                return element.substring(element.indexOf("=") +1).trim().replace("\"","");
+            }
+        }
+        return "";
     }
 }
