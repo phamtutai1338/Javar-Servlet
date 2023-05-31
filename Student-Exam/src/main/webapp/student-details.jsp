@@ -1,15 +1,15 @@
 <%--
   Created by IntelliJ IDEA.
   User: Tài
-  Date: 29/05/2023
-  Time: 14:33
+  Date: 31/05/2023
+  Time: 13:46
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-    <title>Show</title>
+    <title>Detail</title>
     <style>
         a {
             text-decoration: none;
@@ -54,30 +54,29 @@
     </style>
 </head>
 <body>
-<a href="cars">Home</a>
+<a href="students">Home</a>
 <h2 style="text-align: center">Details</h2>
 
 <table>
-<tr>
-    <th>Id</th>
-    <th>Car Name</th>
-    <th>Price</th>
-    <th>Color</th>
-    <th>Image</th>
-    <th>Details</th>
-</tr>
-<c:forEach var="car" items="${carList}">
-<tr>
-    <td>${car.id}</td>
-    <td>${car.carName}</td>
-    <td>${car.price}</td>
-    <td>${car.color}</td>
-    <td><img src="${car.imageUrl}" alt="Car Image" class="image-container"> </td>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Grade</th>
+        <th>Image</th>
+        <th>Detail</th>
+    </tr>
 
-    <td>${car.details}</td>
-</tr>
+        <tr>
+            <td>${student.id}</td>
+            <td>${student.name}</td>
+            <td>${student.details}</td>
 
-</c:forEach>
+            <td><img src="${student.imageUrl}" alt="Student Image" class="image-container"> </td>
+
+
+        </tr>
+
+
 
 
 </table>
