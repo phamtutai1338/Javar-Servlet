@@ -15,7 +15,7 @@
 <body>
 <div id="wrapper">
   <div id="header">
-    <h2>CodeLean Academy</h2>
+    <h2> Nghỉ code</h2>
   </div>
 </div>
 

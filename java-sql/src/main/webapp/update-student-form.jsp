@@ -47,7 +47,7 @@
             </tr>
 
             <tr>
-                <td><label>Email:</label></td>
+                <td><label></label></td>
                 <td><input type="submit" value="Save" class="save"/></td>
             </tr>
             </tbody>

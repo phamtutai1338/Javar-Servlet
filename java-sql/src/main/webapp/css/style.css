@@ -1,32 +1,33 @@
-
-
-body{
+body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f8f8f8;
 }
 
-#header{
+#header {
     background-color: #333;
-    padding: 20px;
+    padding: 2px;
     color: #00aa00;
     text-align: center;
 }
-#header h1{
+
+#header h1 {
     margin: 0;
-    font-size: 20px;
+    font-size: 28px;
     color: #fff;
 }
-#container{
+
+#container {
     margin: 20px;
 }
 
-#content{
+#content {
     padding: 20px;
     background-color: #fff;
 }
-.add-student-button{
+
+.add-student-button {
     background-color: #00aa00;
     color: #fff;
     padding: 10px 20px;
@@ -35,49 +36,44 @@ body{
     cursor: pointer;
     margin-bottom: 20px;
 }
-table{
-    width: 100px;
+
+table {
+    width: 100%;
     border-collapse: collapse;
 }
-table th, table td{
+
+table th, table td {
     padding: 10px;
     border: 1px solid #ccc;
     text-align: left;
 }
-table th{
+
+table th {
     background-color: #333;
     color: #fff;
 }
-.update-link,.delete-link{
+
+.update-link, .delete-link {
     color: #00aa00;
     text-decoration: none;
     margin-right: 5px;
 }
-.delete-link{
+
+.delete-link {
     color: #ff0000;
 }
-.update-link:hover,.delete-link:hover{
+
+.update-link:hover, .delete-link:hover {
     text-decoration: underline;
 }
-/*body{*/
-/*    font-family: Arial,sans-serif;*/
-/*    margin: 0;*/
-/*    padding: 0;*/
-/*    background-color: #f8f8f8;*/
 
-/*}*/
-/*#container{*/
-/*    margin: 20px;*/
-/*}*/
-/*#content{*/
-/*    padding: 20px;*/
-/*}*/
-.page-title{
+.page-title {
     margin-top: 0;
-    font-size:  28px;
+    font-size: 28px;
     color: #00aa00;
 }
-p{
+
+p {
     margin: 0;
     padding: 5px 0;
     color: #333;
