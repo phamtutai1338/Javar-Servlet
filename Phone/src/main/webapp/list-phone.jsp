@@ -11,6 +11,61 @@
 <head>
     <title>Phone</title>
     <link type="text/css" rel="stylesheet" href="css/style.css">
+    <style>
+        .add-phone-button {
+
+            border: solid;
+            background-color: green;
+            font-style: initial;
+            font-family: sans-serif;
+            color: white;
+            padding: 12px;
+            margin-bottom: 0;
+            display: inline-block;
+            border-radius: 10px;
+            text-decoration: none;
+
+        }
+        .delete-link{
+            border: solid;
+            background-color: red;
+            font-style: initial;
+            font-family: sans-serif;
+            color: white;
+            padding: 12px;
+            margin-bottom: 0;
+            display: inline-block;
+            border-radius: 10px;
+            text-decoration: none;
+        }
+        .button {
+            border: solid;
+            background-color: green;
+            font-style: initial;
+            font-family: sans-serif;
+            color: white;
+            display: inline-block;
+            border-radius: 10px;
+            text-decoration: none;
+            padding: 10px;
+        }
+
+        table{
+            width: 100%;
+            border-collapse: collapse;
+        }
+        tr{
+            border-bottom: 1px solid grey;
+        }
+        th {
+            text-align: left;
+        }
+        th,td{
+            border-bottom: 1px solid grey;
+            padding: 12px;
+        }
+
+    </style>
 
 </head>
 <body>
