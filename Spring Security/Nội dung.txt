@@ -1,0 +1,15 @@
+*Spring Security là một framework mạnh mẽ được sử dụng để bảo vệ ứng dụng web trong môi trường Java. Nó cung cấp các tính năng bảo mật mạnh mẽ và linh hoạt để xác thực và ủy quyền người dùng, quản lý phiên làm việc, kiểm soát truy cập và bảo vệ chống các cuộc tấn công bảo mật thông qua một loạt các cơ chế.
+
+Một số khái niệm quan trọng và tính năng chính của Spring Security:
+
+1. Xác thực (Authentication): Spring Security cung cấp cơ chế xác thực mạnh mẽ để xác định danh tính của người dùng. Nó hỗ trợ xác thực bằng cách sử dụng mật khẩu, mã thông báo (token), LDAP, X.509, và nhiều phương thức xác thực khác.
+
+2. Ủy quyền (Authorization): Spring Security cho phép xác định quyền truy cập và phân quyền cho người dùng dựa trên vai trò (role) hoặc quyền (permission). Nó cung cấp các cơ chế linh hoạt để kiểm soát quyền truy cập dựa trên các tiêu chí như URL, phương thức HTTP, biểu thức SpEL và các quy tắc tùy chỉnh.
+
+3. Quản lý phiên làm việc (Session Management): Spring Security hỗ trợ quản lý phiên làm việc bảo mật để ngăn chặn các cuộc tấn công như tấn công kiểm soát phiên (session hijacking) và tấn công đánh cắp cookie (cookie theft). Nó cung cấp các cơ chế như phiên làm việc dựa trên cookie, phiên làm việc dựa trên token, hạn chế số lượng phiên đồng thời, và hỗ trợ các cơ chế như JWT (JSON Web Token).
+
+4. Bảo vệ chống tấn công (Security Protection): Spring Security giúp bảo vệ ứng dụng chống lại các cuộc tấn công bảo mật như tấn công từ chối dịch vụ (Denial of Service - DoS), tấn công tràn bộ đệm (Buffer Overflow), tấn công dò lỗ hổng bảo mật (Security Vulnerability Scanning) và nhiều loại tấn công khác. Nó cung cấp bảo vệ thông qua cấu hình bảo mật, kiểm tra đầu vào (input validation), và giới hạn tần suất truy cập.
+
+5. Tích hợp dễ dàng: Spring Security tích hợp tốt với các framework và công nghệ phổ biến trong môi trường phát triển Java như Spring Framework, Spring Boot, Servlet, JSP, Thymeleaf, RESTful API, OAuth, và nhiều công nghệ khác. Nó cho phép dễ dàng tích hợp bảo mật vào các ứng dụng web hiện có.
+
+Spring Security là một trong những công cụ phổ biến nhất để xây dựng các ứng dụng web an toàn và bảo mật trong môi trường Java. Nó cung cấp các tính năng mạnh mẽ và linh hoạt để giúp nhà phát triển xây dựng và quản lý hệ thống bảo mật đáng tin cậy.

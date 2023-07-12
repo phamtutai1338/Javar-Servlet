@@ -18,7 +18,7 @@ public class ProductController {
     private List<Product> theProducts;
     @PostConstruct
     private void loadData(){
-        Product pro1 = new Product(1,"Ip6s","Blu",4.5,"1");
+        Product pro1 = new Product(1,"ip13","black",43.5,"35");
         theProducts = new ArrayList<>();
         theProducts.add(pro1);
     }
