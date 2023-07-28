@@ -5,6 +5,7 @@ import com.example.apidemoemp.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.Id;
 import java.util.List;
 
 @RestController
@@ -24,7 +25,18 @@ public class EmployeeRestController {
     public Employee newEmployee(@RequestBody Employee newEmployee){
         return repository.save(newEmployee);
     }
+    @PutMapping("/emp/{id}")
+    Employee updateEmp(@RequestBody Employee updateEmp, @PathVariable Integer id) {
+        return repository.findById(id)
 
+                .map(employee -> {
+                    employee.setFirstName(updateEmp.getFirstName());
+                    employee.setLastName(updateEmp.getLastName());
+                    employee.setEmail(updateEmp.getEmail());
+                    return repository.save(employee);
+                })
+                .orElseThrow(() -> new EmployeeNotFoundException(id));
+    }
     @GetMapping("/emp/{id}")
     public Employee one(@PathVariable Integer id){
         return repository.findById(id)
